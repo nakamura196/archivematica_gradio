@@ -5,6 +5,11 @@ from dotenv import load_dotenv
 import uuid
 
 def test(file, transfer_name):
+    file_path = file.name
+
+    if not file_path:
+        return "Please upload a file."
+
     transfer_type = "standard"
     
     load_dotenv(override=True)
@@ -21,7 +26,7 @@ def test(file, transfer_name):
     aws_access_key_id = os.environ.get("AWS_ACCESS_KEY_ID")
     aws_secret_access_key = os.environ.get("AWS_SECRET_ACCESS_KEY")
 
-    file_path = file.name
+    
     
     task_id = str(uuid.uuid4())
 
@@ -49,19 +54,9 @@ demo = gr.Interface(fn=test, inputs=[
 ], outputs=[
     gr.Markdown(label="Result", show_label=True),
 ], examples=[
-    ["./Images.zip", "Images", "standard"]
+    ["examples/Images.zip", "Images Example", "standard"],
+    ["examples/ja.zip", "Japanse Example", "standard"]
 ], title=title, description=description, article=article, allow_flagging="never")
 
 if __name__ == "__main__":
     demo.launch(server_name="0.0.0.0")
-
-'''
-,
-    gr.Radio(
-        label="Transfer Type", 
-        choices=[
-            ("Standard", "standard")
-        ],
-        value="standard"
-        )
-'''

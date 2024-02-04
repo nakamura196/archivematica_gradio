@@ -2,9 +2,9 @@ version: "3.0"
 
 services:
   gradio:
-    container_name: "gradio"
+    container_name: "matica_gradio"
     build: .
     volumes:
       - ./src:/workspace # ホストのカレントディレクトリをコンテナの/appにマウント
     ports:
-      - 7865:7860
+      - "7865:7860"
