@@ -1,0 +1,19 @@
+version: "3.0"
+
+services:
+  gradio:
+    container_name: "matica_gradio"
+    build: .
+    volumes:
+      - ./src:/workspace
+    ports:
+      - "7865:7860"
+    environment:
+      VIRTUAL_HOST: xxx
+      LETSENCRYPT_HOST: xxx
+      LETSENCRYPT_EMAIL: xxx
+
+networks:
+  default:
+    external:
+      name: xxx
