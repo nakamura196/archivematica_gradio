@@ -1,0 +1,10 @@
+version: "3.0"
+
+services:
+  gradio:
+    container_name: "gradio"
+    build: .
+    volumes:
+      - ./src:/workspace # ホストのカレントディレクトリをコンテナの/appにマウント
+    ports:
+      - 7865:7860
