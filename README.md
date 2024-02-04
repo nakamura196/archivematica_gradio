@@ -1,4 +1,4 @@
-# matica_gradio
+# Archivematica Gradio
 
 ## Preparation
 
@@ -20,7 +20,7 @@ version: "3.0"
 
 services:
   gradio:
-    container_name: "matica_gradio"
+    container_name: "archivematica_gradio"
     build: .
     volumes:
       - ./src:/workspace

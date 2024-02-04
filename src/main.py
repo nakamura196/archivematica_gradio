@@ -1,6 +1,6 @@
 import gradio as gr
 import os
-from matica_tools.task import Task
+from archivematica_tools.task import Task
 from dotenv import load_dotenv
 import uuid
 
@@ -11,6 +11,10 @@ def test(file, transfer_name):
         return "Please upload a file."
 
     transfer_type = "standard"
+    location_uuid = "8ba875f0-0e78-4c98-a608-751a362e3194"
+    processing_config = "automated"
+    bucket_name = "archivematica.aws.ldas.jp"
+    transfer_source_prefix = "transfer_source"
     
     load_dotenv(override=True)
     
@@ -25,8 +29,6 @@ def test(file, transfer_name):
 
     aws_access_key_id = os.environ.get("AWS_ACCESS_KEY_ID")
     aws_secret_access_key = os.environ.get("AWS_SECRET_ACCESS_KEY")
-
-    
     
     task_id = str(uuid.uuid4())
 
@@ -39,12 +41,13 @@ def test(file, transfer_name):
         storage_service_password,
         aws_access_key_id,
         aws_secret_access_key,
-        task_id, transfer_type, transfer_name, file_path)
+        task_id, transfer_type, transfer_name, file_path,
+        location_uuid, processing_config, bucket_name, transfer_source_prefix)
 
     return f"# Result\n[Download the AIP file here]({url})"
 
-title = "Archivematica Demo"
-description = "This is a simple demonstration of Archivematica."
+title = "Archivematica Gradio Demo"
+description = "A simple demonstration of Archivematica and Gradio."
 article = "<p style='text-align: center'>Satoru Nakamura, Boyoung Kim, Yasuyuki Minamiyama. <br/>Development of a User-friendly Application to Support Long-term Digital Preservation Using Archivematica, <br/>18th International Digital Curation Conference, 2024.</p>"
 
 
