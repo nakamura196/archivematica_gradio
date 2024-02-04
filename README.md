@@ -1,5 +1,7 @@
 # Archivematica Gradio
 
+A demonstration of Archivematica and Gradio.
+
 ## Preparation
 
 ```src/.env
