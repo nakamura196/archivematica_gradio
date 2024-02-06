@@ -2,7 +2,15 @@
 
 A demonstration of Archivematica and Gradio.
 
+<img src="assets/demo.gif" width="100%" title="Demo">
+
+## 🌐 Website
+
+[Visit the demo page](https://amg.aws.ldas.jp/) to try it out.
+
 ## Preparation
+
+`src/.env` and `docker-compose-prod.yml` are required.
 
 ```src/.env
 DASHBOARD_URL=http://localhost:62080

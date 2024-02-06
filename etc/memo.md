@@ -1,12 +1,11 @@
 # memo
 
 ```python
-,
-    gr.Radio(
-        label="Transfer Type",
-        choices=[
-            ("Standard", "standard")
-        ],
-        value="standard"
-        )
+gr.Radio(
+    label="Transfer Type",
+    choices=[
+        ("Standard", "standard")
+    ],
+    value="standard"
+)
 ```
