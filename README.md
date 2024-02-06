@@ -8,11 +8,11 @@ A demonstration of Archivematica and Gradio.
 
 [Visit the demo page](https://amg.aws.ldas.jp/) to try it out.
 
-## Preparation
+## 📖 Preparation
 
-`src/.env` and `docker-compose-prod.yml` are required.
+Update `src/.env` with the following information.
 
-```src/.env
+```
 DASHBOARD_URL=http://localhost:62080
 DASHBOARD_USERNAME=test
 DASHBOARD_API_KEY=test
@@ -23,9 +23,29 @@ STORAGE_SERVICE_PASSWORD=test
 
 AWS_ACCESS_KEY_ID=xxxxxxxxxxxxxxxxxxxx
 AWS_SECRET_ACCESS_KEY=xxxxxxxxxxxxxxxxxxxx
+AWS_BUCKET_NAME=xxxxxxxxxxxxxxxxxxxx
+
+LOCATION_UUID=xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
+PROCESSING_CONFIG=automated
+TRANSFER_TYPE=standard
+TRANSFER_SOURCE_PREFIX=transfer_source
 ```
 
-```docker-compose-prod.yml
+## 📖 Development
+
+```bash
+python -m venv .venv
+source .venv/bin/activate
+pip install -r src/requirements.txt
+
+docker compose up --build
+```
+
+## 📖 Production
+
+Update `docker-compose-prod.yml` with the following information.
+
+```yml
 version: "3.0"
 
 services:
@@ -47,14 +67,10 @@ networks:
       name: xxx
 ```
 
-## 📖 Installation
-
 ```bash
-docker compose up --build
-```
+python -m venv .venv
+source .venv/bin/activate
+pip install -r src/requirements.txt
 
-## Production
-
-```bash
 docker compose -f docker-compose-prod.yml up -d --build
 ```

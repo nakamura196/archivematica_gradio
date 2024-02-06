@@ -9,12 +9,6 @@ def test(file, transfer_name):
 
     if not file_path:
         return "Please upload a file."
-
-    transfer_type = "standard"
-    location_uuid = "8ba875f0-0e78-4c98-a608-751a362e3194"
-    processing_config = "automated"
-    bucket_name = "archivematica.aws.ldas.jp"
-    transfer_source_prefix = "transfer_source"
     
     load_dotenv(override=True)
     
@@ -29,6 +23,14 @@ def test(file, transfer_name):
 
     aws_access_key_id = os.environ.get("AWS_ACCESS_KEY_ID")
     aws_secret_access_key = os.environ.get("AWS_SECRET_ACCESS_KEY")
+
+    aws_bucket_name = os.environ.get("AWS_BUCKET_NAME")
+
+    transfer_type = os.environ.get("TRANSFER_TYPE")
+    location_uuid = os.environ.get("LOCATION_UUID")
+    processing_config = os.environ.get("PROCESSING_CONFIG")
+    
+    transfer_source_prefix = os.environ.get("TRANSFER_SOURCE_PREFIX")
     
     task_id = str(uuid.uuid4())
 
@@ -41,8 +43,15 @@ def test(file, transfer_name):
         storage_service_password,
         aws_access_key_id,
         aws_secret_access_key,
-        task_id, transfer_type, transfer_name, file_path,
-        location_uuid, processing_config, bucket_name, transfer_source_prefix)
+        task_id,
+        transfer_type,
+        transfer_name,
+        file_path,
+        location_uuid,
+        processing_config,
+        aws_bucket_name,
+        transfer_source_prefix
+    )
 
     return f"# Result\n[Download the AIP file here]({url})"
 
